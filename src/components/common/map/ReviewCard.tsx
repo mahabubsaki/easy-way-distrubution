@@ -34,7 +34,7 @@ const ReviewCard = ({ date, img, onOpen, id, productName, rating, review, setCur
                     <figure className='aspect-square w-full group rounded-lg relative'>
                         <img src={img} alt="" className='h-full w-full rounded-lg' />
                         <div className='group-hover:opacity-100 absolute group-hover:bottom-3 mx-auto left-1/2 -translate-x-1/2 duration-500  opacity-0 -bottom-2'>
-                            <CustomDarkButton>Details</CustomDarkButton>
+                            <CustomDarkButton type={undefined}>Details</CustomDarkButton>
                         </div>
                     </figure>
                     <p className='text-lg font-semibold capitalize text-[#222529] text-center'>{productName}</p>
@@ -60,7 +60,7 @@ const ReviewCard = ({ date, img, onOpen, id, productName, rating, review, setCur
                     setDeleteId(id);
                     onOpen1();
                 }}>
-                    <CustomDarkButton>Delete Review</CustomDarkButton>
+                    <CustomDarkButton type={undefined}>Delete Review</CustomDarkButton>
                 </div>
 
             </div>
