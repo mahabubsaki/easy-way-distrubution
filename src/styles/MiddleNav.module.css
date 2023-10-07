@@ -1,0 +1,38 @@
+
+.select option {
+    max-width: 2000px; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+  }
+  
+.select option:hover {
+    overflow: visible; 
+    white-space: normal; 
+  }
+  .custom-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: #08c transparent transparent transparent;
+    transform: rotate(180deg);
+    position: absolute;
+    top: -16px;
+}
+.mySticky{
+  position: static;
+  }
+  .myFixed{
+  position: fixed;
+  top: -80px;
+  animation: slide 0.3s forwards;
+  }
+  @keyframes slide {
+      0% {
+        top: -80px;
+      }
+      100% {
+        top: 0;
+      }
+    }

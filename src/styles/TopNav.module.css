@@ -1,0 +1,22 @@
+.lang-title:hover .lang-dropdown{
+    top:100%;
+   opacity: 1;
+  max-height: 1000px;
+   overflow: visible;
+   padding: 3px 0px;
+}
+.lang-dropdown{
+top: 70%;
+opacity: 0;
+max-height: 0px;
+padding: 0px 0px;
+overflow: hidden;
+}
+.lang-dropdown li{
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s linear;
+    padding: 0px 5px;
+}
+.lang-dropdown li:hover{
+    background-color: #f4f4f4;
+}

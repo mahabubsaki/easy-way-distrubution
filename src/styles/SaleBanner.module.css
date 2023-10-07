@@ -1,0 +1,14 @@
+.banner-container{
+    background-image: url('../assets/banner-sale.jpg');
+}
+.big-sale::before{
+    content: '';
+    position: absolute;
+    background-color: #222529;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: rotate(-2deg);
+}

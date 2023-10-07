@@ -1,0 +1,18 @@
+.mySticky{
+    position: static;
+    }
+    .myFixed{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: -80px;
+    animation: slide 0.5s forwards;
+    }
+    @keyframes slide {
+        0% {
+          top: -80px;
+        }
+        100% {
+          top: 75px;
+        }
+      }

@@ -1,0 +1,50 @@
+.mySticky{
+position: sticky;
+top: 0;
+}
+.myFixed{
+position: fixed;
+top: -80px;
+animation: slide 0.3s forwards;
+}
+@keyframes slide {
+    0% {
+      top: -80px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+.nav::before{
+  content: '';
+  display: block;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right:10px;
+    border-top: 1px solid #f4f4f4;
+}
+
+.lang-title:hover .lang-dropdown{
+  top:100%;
+ opacity: 1;
+max-height: 1000px;
+ overflow: visible;
+ padding: 3px 0px;
+}
+.lang-dropdown{
+top: 70%;
+opacity: 0;
+max-height: 0px;
+padding: 0px 0px;
+overflow: hidden;
+}
+.lang-dropdown li{
+  background-color: rgb(255, 255, 255);
+  transition: all 0.2s linear;
+  padding: 10px 5px;
+  text-align: center;
+}
+.lang-dropdown li:hover{
+  background-color: #f4f4f4;
+}

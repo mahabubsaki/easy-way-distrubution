@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+.swiperComponent img{
+    width: 100%;
+    display: block;
+height: 100%;
+}
+.swiperComponent{
+    height: 100%;
+}
+.saleTitle{
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    color:#222529;
+    margin-top: 0;
+}
+.swiper-slide {
+    opacity: 0; /* Initially hide the div */
+    transition: opacity 0.5s ease-in-out; /* Add a transition effect to the opacity property */
+  }
+  
+  .swiper-slide-active {
+    opacity: 1; /* Show the div when the slide is active */
+  }
