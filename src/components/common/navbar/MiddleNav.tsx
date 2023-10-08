@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, CSSProperties } from 'react';
+import React, { useRef, useState, useEffect, CSSProperties, useContext } from 'react';
 import logo from '@/assets/Blue_and_Purple_Bag_Online_Shop_Logo.png';
 import { FiPhoneCall } from 'react-icons/fi';
 import { AiOutlineUser, AiOutlineShopping } from 'react-icons/ai';
@@ -15,8 +15,11 @@ import { FaSearch } from 'react-icons/fa';
 import { brands, categories } from '@/utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Context } from '@/layouts/UserLayout';
 
 const MiddleNav = () => {
+    const { cart } = useContext(Context);
+
     const btnRef = useRef<HTMLButtonElement>(null);
     const btnRef2 = useRef<HTMLButtonElement>(null);
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -70,25 +73,7 @@ const MiddleNav = () => {
                             <div className='w-full h-[40px] hidden lg:flex items-center rounded-[50px] bg-[#f1f1f1]'>
                                 <input placeholder='Search...' type="text" className='h-full w-[70%] outline-none px-[20px] py-[10px]  bg-transparent rounded-tl-[50px] rounded-bl-[50px]' />
                                 <div className='font-normal flex items-center w-[23%] px-[14px] border-l border-r h-[40px] border-white'>
-                                    <select name="" id="" className={`bg-transparent w-full cursor-pointer outline-none ${styles.select}`}>
-                                        <option value="">All Categories</option>
-                                        <option value="4">Fashion</option>
-                                        <option value="12">- Women</option>
-                                        <option value="13">- Men</option>
-                                        <option value="66">- Jewellery</option>
-                                        <option value="67">- Kids Fashion</option>
-                                        <option value="5">Electronics</option>
-                                        <option value="21">- Smart TVs</option>
-                                        <option value="22">- Cameras</option>
-                                        <option value="63">- Games</option>
-                                        <option value="7">Home &amp; Garden</option>
-                                        <option value="11">Motors</option>
-                                        <option value="31">- Cars and Trucks</option>
-                                        <option value="32">- Motorcycles &amp; Powersports</option>
-                                        <option value="33">- Parts &amp; Accessories</option>
-                                        <option value="34">- Boats</option>
-                                        <option value="57">- Auto Tools &amp; Supplies</option>
-                                    </select>
+
                                 </div>
                                 <div className='w-[7%] h-[40px] flex justify-center items-center'>
                                     <BsSearch className='text-[#222529] text-lg cursor-pointer' />
@@ -117,25 +102,7 @@ const MiddleNav = () => {
                                         <span className={`${styles['custom-arrow']} duration-500 right-[23px]`}></span>
                                         <input placeholder='Search...' type="text" className='h-full w-[45%] outline-none px-[20px] py-[10px]  bg-transparent rounded-tl-[50px] rounded-bl-[50px]' />
                                         <div className='font-normal flex items-center w-[43%] px-[14px] border-l border-r h-[40px] border-white'>
-                                            <select name="" id="" className={`bg-transparent w-full cursor-pointer outline-none ${styles.select}`}>
-                                                <option value="">All Categories</option>
-                                                <option value="4">Fashion</option>
-                                                <option value="12">- Women</option>
-                                                <option value="13">- Men</option>
-                                                <option value="66">- Jewellery</option>
-                                                <option value="67">- Kids Fashion</option>
-                                                <option value="5">Electronics</option>
-                                                <option value="21">- Smart TVs</option>
-                                                <option value="22">- Cameras</option>
-                                                <option value="63">- Games</option>
-                                                <option value="7">Home &amp; Garden</option>
-                                                <option value="11">Motors</option>
-                                                <option value="31">- Cars and Trucks</option>
-                                                <option value="32">- Motorcycles &amp; Powersports</option>
-                                                <option value="33">- Parts &amp; Accessories</option>
-                                                <option value="34">- Boats</option>
-                                                <option value="57">- Auto Tools &amp; Supplies</option>
-                                            </select>
+
                                         </div>
                                         <div className='w-[12%] h-[40px] flex justify-center items-center'>
                                             <BsSearch className='text-[#222529] text-lg cursor-pointer' />
@@ -147,7 +114,7 @@ const MiddleNav = () => {
                                 <FiHeart className='text-[#222529] hidden xs:block' />
                                 <button className='relative hidden xs:block' onClick={onOpen} ref={btnRef} >
                                     <AiOutlineShopping className='text-[#222529]' />
-                                    <span className='absolute h-4 w-4 rounded-full bg-[#FF5B5B] z-1 text-white flex justify-center items-center text-[11px] -right-[7px] top-0'>0</span>
+                                    <span className='absolute h-4 w-4 rounded-full bg-[#FF5B5B] z-1 text-white flex justify-center items-center text-[11px] -right-[7px] top-0'>{cart.reduce((pre, cure) => pre + cure.quantity, 0)}</span>
                                 </button>
                             </div>
                         </div>
@@ -164,14 +131,10 @@ const MiddleNav = () => {
                 <DrawerContent className='py-[25px] px-[20px] overflow-y-auto' style={{ fontFamily: "'Poppins', sans-serif" }}>
                     <p className='mb-[17px] leading-10 font-bold text-[#212529] text-[20px]'>Shopping Cart</p>
                     <DrawerCloseButton size={'lg'} className='text-black' />
-                    {new Array(5).fill(0).map((item, i) => <CartProduct key={i} />)}
+                    {cart.map(({ img, name, price, quantity }, i) => <CartProduct key={i} img={img} name={name} price={price} quantity={quantity} />)}
                     <div className='my-[15px] flex items-center justify-between text-[#212529] font-bold text-[13px]'>
                         <span>SUBTOTAL:</span>
-                        <span className='text-[15px]'>$134.00</span>
-                    </div>
-                    <div className='mt-[10px] flex flex-col gap-[15px]'>
-                        <button className='bg-[#e7e7e7] hover:bg-[#f1f1f1] duration-500 text-[12px] font-semibold py-[14px] leading-[16px] tracking-wide rounded-sm px-[25px]'><Link className='hover:no-underline hover:text-[#222529]' href={'/cart'}>VIEW CART</Link></button>
-                        <button className='bg-[#222529] hover:bg-[#34393F] text-white duration-500 text-[12px] font-semibold py-[14px] leading-[16px] tracking-wide rounded-sm px-[25px]'><Link className='hover:no-underline hover:text-white' href={'/checkout'}>CHECKOUT</Link></button>
+                        <span className='text-[15px]'>${cart.reduce((pre, cur) => pre + Number(cur.quantity) * Number(cur.price), 0)}</span>
                     </div>
                 </DrawerContent>
             </Drawer >

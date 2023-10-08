@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const BrandsMarquee = () => {
     return (
-        <div>
+        <div className="my-4">
             <div className='max-w-[1200px] mx-auto'>
                 <div className='px-[10px] mb-[20px]'>
                     <p className="flex items-center mx-0 xl:-mx-[20px]">

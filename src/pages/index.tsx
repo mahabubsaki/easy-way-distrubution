@@ -41,7 +41,7 @@ export default function Home(props: PageDataType) {
         {/* <Services /> */}
         <ParallexPromo />
 
-        <LatestNews />
+        {/* <LatestNews /> */}
         <BrandsMarquee />
       </UserLayout>
     </>
