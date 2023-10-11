@@ -1,5 +1,2 @@
-node_modules
-.vercel
-.next
-src
-public
+*
+!out

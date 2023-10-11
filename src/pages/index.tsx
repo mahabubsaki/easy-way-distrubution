@@ -10,17 +10,12 @@ import ParallexPromo from '@/components/home/ParallexPromo';
 import LatestNews from '@/components/home/LatestNews';
 import BrandsMarquee from '@/components/home/BrandsMarquee';
 
-// import apolloClient from '@/configs/apollo-client.config';
-import { GetStaticProps } from 'next';
 
 
 
-type PageDataType = {
-  allCategories: string[];
-};
 
 
-export default function Home(props: PageDataType) {
+export default function Home() {
 
   return (
     <>
@@ -48,12 +43,3 @@ export default function Home(props: PageDataType) {
   );
 }
 
-
-export const getStaticProps: GetStaticProps<PageDataType> = async () => {
-  return {
-    props: {
-      allCategories: ['hi'],
-    },
-    revalidate: 86400
-  };
-};
